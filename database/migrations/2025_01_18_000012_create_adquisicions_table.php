@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('monto');
             $table->foreignId('financiamientos_id')->constrained('financiamientos')->onDelete('cascade');
+            $table->integer('estado')->default(1);
             $table->timestamps();
         });
     }

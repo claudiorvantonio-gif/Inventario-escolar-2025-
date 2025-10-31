@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('nombre');
             $table->integer('tipo');
             $table->integer('monto');
-            $table->integer('estado');
+            $table->integer('estado')->default(1);
             $table->timestamps();
         });
     }
