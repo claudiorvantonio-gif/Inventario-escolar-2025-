@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Cargo extends Model
 {
     protected $table = "cargos";
-    protected $fillable = ['nombre', 'estado'];
+    protected $fillable = ['nombre','tipo', 'estado'];
     protected $hidden = ['id'];
 
     //Minimo un cargo le pertenece a un personal

@@ -126,11 +126,13 @@ class PrestacionController extends Controller
 
     public function destroy(string $id)
     {
+
         try {
             // Buscar el item, o lanzar una excepción si no se encuentra
             $prestacion = Prestaciones::findOrFail($id);
             // Eliminar el item
             $prestacion->delete();
+
             // Responder con éxito
             return response()->json(['success' => 'Item eliminado exitosamente']);
         } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {

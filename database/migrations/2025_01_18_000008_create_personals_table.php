@@ -11,14 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('equipos', function (Blueprint $table) {
+        Schema::create('personals', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre');
-            $table->string('serial');
-            $table->string('modelo');
-            $table->string('color');
-            $table->unsignedBiginteger('categorias_id')->nullable();
-            $table->foreign('categorias_id')->references('id')->on('categorias')->nullable()->constrained()->onUpdate('cascade');            
+            $table->string('nombres');
+            $table->string('apellidos');
+            $table->foreignId('cargos_id')->constrained('cargos')->onDelete('cascade');
+            $table->foreignId('salas_id')->constrained('salas')->onDelete('cascade');
             $table->integer('estado')->default(1);
             $table->timestamps();
         });
@@ -29,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('equipos');
+        Schema::dropIfExists('personals');
     }
 };
