@@ -13,6 +13,12 @@ return new class extends Migration
     {
         Schema::create('solicituds', function (Blueprint $table) {
             $table->id();
+            $table->string('motivo');
+            $table->integer('tipo_solicitud')->default(1);
+            $table->unsignedBiginteger('equipos_id')->nullable();
+            $table->foreign('equipos_id')->references('id')->on('equipos')->nullable()->constrained()->onUpdate('cascade');
+            $table->integer('estado')->default(1);
+            $table->date('fecha_solicitud');
             $table->timestamps();
         });
     }

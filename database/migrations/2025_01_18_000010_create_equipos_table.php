@@ -6,9 +6,6 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
         Schema::create('equipos', function (Blueprint $table) {
@@ -23,19 +20,13 @@ return new class extends Migration
             $table->foreign('categorias_id')->references('id')->on('categorias')->nullable()->constrained()->onUpdate('cascade');
             $table->unsignedBiginteger('salas_id')->nullable();
             $table->foreign('salas_id')->references('id')->on('salas')->nullable()->constrained()->onUpdate('cascade');
-             $table->unsignedBiginteger('personals_id')->nullable();
+            $table->unsignedBiginteger('personals_id')->nullable();
             $table->foreign('personals_id')->references('id')->on('personals')->nullable()->constrained()->onUpdate('cascade');
-            $table->unsignedBiginteger('adquisicion_id')->nullable();
-            $table->foreign('adquisicion_id')->references('id')->on('adquisicions')->nullable()->constrained()->onUpdate('cascade');
-
             $table->integer('estado')->default(1);
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('equipos');

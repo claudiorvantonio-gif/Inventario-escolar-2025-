@@ -15,7 +15,8 @@ return new class extends Migration
             $table->id();
 
             $table->date('fecha_adquisicion');
-            $table->foreignId('fadquisicions_id')->constrained('adquisicions')->onDelete('cascade');
+            $table->foreignId('adquisicions_id')->constrained('adquisicions')->onDelete('cascade');
+           
             $table->timestamps();
         });
     }
