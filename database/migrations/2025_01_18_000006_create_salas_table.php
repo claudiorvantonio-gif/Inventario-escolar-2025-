@@ -11,7 +11,9 @@ return new class extends Migration
         Schema::create('salas', function (Blueprint $table) {
             $table->id();
             $table->string('nombre');
-            $table->string('numero_equipos');
+            $table->integer('numero_equipos');
+            $table->string('tipo_sala');
+
             $table->integer('estado')->default(1);
             $table->timestamps();
         });

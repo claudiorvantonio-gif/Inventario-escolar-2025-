@@ -38,6 +38,7 @@ class SalasController extends Controller
     {
         $validated = $request->validate([
             'nombre' => 'required',
+            'numero_equipos' => 'required',
             'tipo_sala' => 'required',
         ]);
 
@@ -46,6 +47,7 @@ class SalasController extends Controller
         } else {
             Salas::create([
                 'nombre'       => $request->input('nombre'),
+                'numero_equipos'   => $request->input('numero_equipos'),
                 'tipo_sala'   => $request->input('tipo_sala'),
             ]);
 

@@ -59,6 +59,19 @@
                                     </div>
                                 </div>
                             </div>
+
+                            <div class="row mt-2">
+                                <div class="col">
+                                    <label for="equipos">Ingrese tipo de cargo</label>
+                                    <div class="input-group mb-3">
+                                        <select  id="" name="tipo_cargo">
+                                            <option value="1">Planta</option>
+                                            <option value="2">Contrata</option>
+
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
                             <button class="btn btn-outline-secondary" type="submit" id="id">Guardar</button>
 
                         </form>
@@ -174,7 +187,7 @@
                                 <div class="d-flex flex-column justify-content-center">
                                     <h6 class="mb-0 text-sm">
 
-                                        <h6 class="mb-0 text-sm">{{ $personal->cargo_nombre}}</h6>
+                                        <h6 class="mb-0 text-sm">{{ $personal->cargo_nombre }}</h6>
                                     </h6>
 
                                 </div>
@@ -188,7 +201,7 @@
                                 <div class="d-flex flex-column justify-content-center">
                                     <h6 class="mb-0 text-sm">
 
-                                        <h6 class="mb-0 text-sm">{{ $personal->sala_nombre}}</h6>
+                                        <h6 class="mb-0 text-sm">{{ $personal->sala_nombre }}</h6>
                                     </h6>
 
 

@@ -20,24 +20,16 @@ class PersonalController extends Controller
      */
     public function index()
     {
-
-
         $personales = Personal::with([
             'cargo:id,nombre', // Incluye solo el ID y el nombre del cargo
             'sala:id,nombre'   // Incluye solo el ID y el nombre de la sala
         ])->get();
-
-
-
-
 
         // $cargos_personal =  DB::table('personals')
         //     ->crossJoin('cargos')
         //     ->select('cargos.id', 'cargos.nombre')
         //     ->where('personals.cargos_id', '=', DB::raw('cargos.id'))
         //     ->get();
-
-
 
         $personals = DB::table('personals')
             ->select('*')
@@ -58,8 +50,6 @@ class PersonalController extends Controller
             ->join('salas', 'personals.salas_id', '=', 'salas.id')     // Join con la tabla salas
             ->select('personals.id', 'personals.nombres', 'personals.apellidos', 'personals.estado', 'cargos.nombre as cargo_nombre', 'salas.nombre as sala_nombre')  // Seleccionamos los campos necesarios
             ->get();
-
-
 
         return view('personal.personal', compact('personales', 'cargos', 'salas'));
     }
@@ -153,16 +143,18 @@ class PersonalController extends Controller
     {
         $validated = $request->validate([
             'cargo_nuevo' => 'required',
+            'tipo_cargo' => 'required'
         ]);
 
         if (!$validated) {
-            return redirect()->back()->with('error', '¡Usuario creado con éxito!');
+            return redirect()->back()->with('error', '¡Cargo creado con éxito!');
         } else {
             Cargo::create([
-                'nombre' => $request->input('cargo_nuevo')
+                'nombre' => $request->input('cargo_nuevo'),
+                'tipo_cargo' => $request->input('tipo_cargo')
             ]);
 
-            return redirect()->back()->with('success', '¡Usuario creado con éxito!');
+            return redirect()->back()->with('success', '¡Cargo creado con éxito!');
         }
     }
 }

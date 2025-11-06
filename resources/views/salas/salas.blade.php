@@ -28,6 +28,10 @@
                                 <input type="text" class="form-control" placeholder="Nombre" name="nombre" required>
                             </div>
 
+                             <div class="col">
+                                <input type="number" class="form-control" placeholder="" name="numero_equipos" required>
+                            </div>
+
                             <div class="col">
                                 <input type="text" class="form-control" placeholder="Tipo de sala" name="tipo_sala"
                                     required>
