@@ -13,7 +13,6 @@ return new class extends Migration
             $table->string('nombre');
             $table->integer('numero_equipos');
             $table->string('tipo_sala');
-
             $table->integer('estado')->default(1);
             $table->timestamps();
         });

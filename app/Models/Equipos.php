@@ -9,7 +9,7 @@ class Equipos extends Model
 {
     //
     protected $table = "equipos";
-    protected $fillable = ['nombre', 'serial', 'modelo', 'color', 'categorias_id', 'estado'];
+    protected $fillable = ['nombre', 'numero_serial', 'modelo', 'marca','modelo','color','descripcion', 'categorias_id', 'salas_id', 'personals_id','estado'];
     protected $hidden = ['id'];
 
 
@@ -19,6 +19,11 @@ class Equipos extends Model
     }
 
     public function Sala(): HasMany
+    {
+        return $this->hasMany(Salas::class);
+    }
+
+      public function Personal(): HasMany
     {
         return $this->hasMany(Salas::class);
     }

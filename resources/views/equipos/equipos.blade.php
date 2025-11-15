@@ -32,6 +32,7 @@
         Agregar Equipo
     </button>
 
+    
     <!-- Modal -->
     <div class="modal fade" id="equipos" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -61,6 +62,15 @@
                             </div>
                         </div>
 
+                         <div class="row mt-2">
+                            <div class="col">
+                                <input type="text" class="form-control" placeholder="marca" name="marca" required>
+                            </div>
+                            <div class="col">
+                                <input type="text" class="form-control" placeholder="descripcion" name="descripcion" required>
+                            </div>
+                        </div>
+
 
                         <div class="row mt-2">
                             <div class="col">
@@ -68,6 +78,31 @@
                                 <select name="categorias_id" id="categoria" class="form-select">
                                     @foreach ($categorias as $categoria)
                                         <option value="{{ $categoria->id }}">{{ $categoria->nombre }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+
+                        </div>
+
+                         <div class="row mt-2">
+                            <div class="col">
+                                <label for="category">Selecciona una categoría</label>
+                                <select name="categorias_id" id="categoria" class="form-select">
+                                    @foreach ($personals as $personal)
+                                        <option value="{{ $personal->id }}">{{ $personal->nombres }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+
+                        </div>
+
+
+                         <div class="row mt-2">
+                            <div class="col">
+                                <label for="category">Selecciona una categoría</label>
+                                <select name="salas_id" id="sala" class="form-select">
+                                    @foreach ($salas as $sala)
+                                        <option value="{{ $sala->id }}">{{ $sala->nombre }}</option>
                                     @endforeach
                                 </select>
                             </div>

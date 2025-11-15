@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Personal extends Model
 {
@@ -20,5 +21,10 @@ class Personal extends Model
     public function cargo()
     {
         return $this->belongsTo(Cargo::class); // La clave foránea en la tabla 'personal' es 'cargo_id'
+    }
+
+     public function Equipo() : BelongsTo
+    {
+        return $this->belongsTo(Equipos::class);
     }
 }
