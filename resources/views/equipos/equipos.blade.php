@@ -32,7 +32,7 @@
         Agregar Equipo
     </button>
 
-    
+
     <!-- Modal -->
     <div class="modal fade" id="equipos" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -49,7 +49,8 @@
                                 <input type="text" class="form-control" placeholder="Nombre" name="nombre" required>
                             </div>
                             <div class="col">
-                                <input type="text" class="form-control" placeholder="Serial" name="serial" required>
+                                <input type="text" class="form-control" placeholder="Serial" name="numero_serial"
+                                    required>
                             </div>
                         </div>
 
@@ -62,12 +63,13 @@
                             </div>
                         </div>
 
-                         <div class="row mt-2">
+                        <div class="row mt-2">
                             <div class="col">
                                 <input type="text" class="form-control" placeholder="marca" name="marca" required>
                             </div>
                             <div class="col">
-                                <input type="text" class="form-control" placeholder="descripcion" name="descripcion" required>
+                                <input type="text" class="form-control" placeholder="descripcion" name="descripcion"
+                                    required>
                             </div>
                         </div>
 
@@ -84,10 +86,10 @@
 
                         </div>
 
-                         <div class="row mt-2">
+                        <div class="row mt-2">
                             <div class="col">
-                                <label for="category">Selecciona una categoría</label>
-                                <select name="categorias_id" id="categoria" class="form-select">
+                                <label for="category">Seleccione Personal a cargo</label>
+                                <select name="personals_id" id="personals" class="form-select">
                                     @foreach ($personals as $personal)
                                         <option value="{{ $personal->id }}">{{ $personal->nombres }}</option>
                                     @endforeach
@@ -97,7 +99,7 @@
                         </div>
 
 
-                         <div class="row mt-2">
+                        <div class="row mt-2">
                             <div class="col">
                                 <label for="category">Selecciona una categoría</label>
                                 <select name="salas_id" id="sala" class="form-select">
@@ -129,7 +131,8 @@
                 <th scope="col">Modelo</th>
                 <th scope="col">Color</th>
                 <th scope="col">Categoria</th>
-                
+                <th scope="col">Personal</th>
+                <th scope="col">Sala</th>
                 <th scope="col">Estado</th>
                 <th scope="col">Acciones</th>
             </tr>
@@ -154,7 +157,7 @@
 
                     <td>
                         <div class="d-flex flex-column justify-content-center">
-                            <h6 class="mb-0 text-sm">{{ $equipo->serial }}</h6>
+                            <h6 class="mb-0 text-sm">{{ $equipo->numero_serial }}</h6>
 
                         </div>
                     </td>
@@ -173,14 +176,37 @@
                         </div>
                     </td>
 
-                    
+
 
 
                     <td>
                         <div class="d-flex flex-column justify-content-center">
 
                             <h6 class="mb-0 text-sm">
-                                {{ $equipo->categoria_nombre}}
+                                {{ $equipo->categoria_nombre }}
+
+                            </h6>
+
+                        </div>
+                    </td>
+
+                    <td>
+                        <div class="d-flex flex-column justify-content-center">
+
+                            <h6 class="mb-0 text-sm">
+                                {{ $equipo->personal_nombre }}
+
+                            </h6>
+
+                        </div>
+                    </td>
+
+
+                    <td>
+                        <div class="d-flex flex-column justify-content-center">
+
+                            <h6 class="mb-0 text-sm">
+                                {{ $equipo->sala_nombre }}
 
                             </h6>
 

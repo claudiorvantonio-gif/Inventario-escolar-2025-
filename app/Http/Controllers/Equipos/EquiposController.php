@@ -24,7 +24,7 @@ class EquiposController extends Controller
             ->select('*')
             ->where('estado', '=', 1)->get();
 
-            $personals = DB::table('personals')
+        $personals = DB::table('personals')
             ->select('*')
             ->where('estado', '=', 1)->get();
 
@@ -34,6 +34,8 @@ class EquiposController extends Controller
 
         $categorias_equipo = DB::table('equipos')
             ->join('categorias', 'equipos.categorias_id', '=', 'categorias.id') // Join con la tabla categorias
+            ->join('salas', 'equipos.salas_id', '=', 'salas.id')
+            ->join('personals', 'equipos.personals_id', '=', 'personals.id')
             ->select(
                 'categorias.id as categoria_id',
                 'categorias.nombre as categoria_nombre',
@@ -44,12 +46,17 @@ class EquiposController extends Controller
                 'equipos.color',
                 'equipos.estado',
                 'equipos.categorias_id',
-                'equipos.personals_id'
+                'equipos.personals_id',
+                'equipos.salas_id',
+
+
+                'salas.nombre as sala_nombre',
+                'personals.nombres as personal_nombre',
             ) // Seleccionamos los campos necesarios
             ->get();
 
 
-        return view('equipos.equipos', compact('equipos', 'categorias','personals', 'salas', 'categorias_equipo'));
+        return view('equipos.equipos', compact('equipos', 'categorias', 'personals', 'salas', 'categorias_equipo'));
     }
 
     /**
@@ -72,7 +79,7 @@ class EquiposController extends Controller
         $data = $request->all();
 
 
-       
+
         $equipos->create($data);
         return redirect()->back()->with('success', '¡Equipo creado con éxito!');
     }
