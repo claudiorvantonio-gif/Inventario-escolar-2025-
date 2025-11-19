@@ -52,10 +52,13 @@
                                     </div>
 
                                     <select name="equipo" id="equipo" class="form-select">
+                                        <option value="" disabled>Nombre de equipo|Modelo|Numero serial</option>
                                         @foreach ($equipos as $equipo)
-
                                             <option value="{{ $equipo->id }}">
-                                                {{ $equipo->nombre }}-{{ $equipo->modelo }}-{{ $equipo->serial }}</option>
+                                                {{ $equipo->nombre }} |
+                                                {{ $equipo->modelo }} |
+                                                {{ $equipo->numero_serial }}
+                                            </option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -191,7 +194,7 @@
             const calendarEl = document.getElementById('calendar')
             const calendar = new FullCalendar.Calendar(calendarEl, {
                 initialView: 'dayGridMonth',
-                locales: 'ES',
+                locales: 'es',
                 hiddenDays: [0, 6],
                 events: "{{ route('Prestacion-show') }}",
 
@@ -251,25 +254,25 @@
 
                         let id = events.id;
 
-                        let  title = $('#title').val(); 
-                        let  start = $('#start').val(); 
-                        let  end = $('#end').val(); 
-                        let  color = $('#color').val(); 
-                        let  observacion = $('#observacion').val(); 
-                        let  equipos = $('#equipo').val(); 
-                        let   personal = $('#personal').val(); 
+                        let title = $('#title').val();
+                        let start = $('#start').val();
+                        let end = $('#end').val();
+                        let color = $('#color').val();
+                        let observacion = $('#observacion').val();
+                        let equipos = $('#equipo').val();
+                        let personal = $('#personal').val();
 
                         $.ajax({
                             url: '/Prestacion_update/' + id,
                             type: 'PUT',
                             data: {
-                                 title:title,
-                                 start:start,
-                                 end:end,
-                                 color:color,
-                                 observacion:observacion,
-                                 equipo:equipo,
-                                 personal:personal,
+                                title: title,
+                                start: start,
+                                end: end,
+                                color: color,
+                                observacion: observacion,
+                                equipo: equipo,
+                                personal: personal,
                                 _token: '{{ csrf_token() }}' // Agregar el token CSRF para proteger la solicitud
                             },
                             success: function(response) {
@@ -290,7 +293,7 @@
                             }
                         });
 
-                    
+
                     });
 
 
