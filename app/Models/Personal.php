@@ -9,7 +9,7 @@ class Personal extends Model
 {
 
     protected $table = "personals";
-    protected $fillable = ['nombres', 'apellidos', 'cargos_id','salas_id', 'estado'];
+    protected $fillable = ['nombres', 'apellidos', 'cargos_id', 'salas_id', 'estado'];
     protected $hidden = ['id'];
 
     //Muchos personales tienen un cargo
@@ -23,8 +23,13 @@ class Personal extends Model
         return $this->belongsTo(Cargo::class); // La clave foránea en la tabla 'personal' es 'cargo_id'
     }
 
-     public function Equipo() : BelongsTo
+    public function Equipo(): BelongsTo
     {
         return $this->belongsTo(Equipos::class);
+    }
+
+    public function Solicitud_compra(): BelongsTo
+    {
+        return $this->belongsTo(Solicitud_compra::class);
     }
 }

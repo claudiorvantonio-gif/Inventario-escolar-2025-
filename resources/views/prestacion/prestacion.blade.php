@@ -194,8 +194,7 @@
             const calendarEl = document.getElementById('calendar')
             const calendar = new FullCalendar.Calendar(calendarEl, {
                 initialView: 'dayGridMonth',
-                locales: 'es',
-                hiddenDays: [0, 6],
+                locales: 'en',
                 events: "{{ route('Prestacion-show') }}",
 
                 headerToolbar: {
@@ -207,7 +206,8 @@
                         titleFormat: {
                             year: 'numeric',
                             month: '2-digit',
-                            day: '2-digit'
+                            day: '2-digit',
+                            selectable: true,
                         }
                     }
                 },
@@ -215,6 +215,7 @@
                 dateClick: function(info) {
                     form_data.reset();
                     form_data.start.value = info.dateStr;
+
                     $("#prestacion").modal("show");
 
                 },
@@ -222,6 +223,8 @@
                 eventClick: function(info) {
 
                     let events = info.event;
+
+
 
                     $.ajax({
                         url: '/Prestacion-editar/' + events.id,
@@ -307,6 +310,14 @@
 
             document.getElementById("btn_guardar").addEventListener("click", function() {
                     const data = new FormData(form_data);
+                    let endValue = data.get('end'); // lo que escribió el usuario
+
+                    if (endValue) {
+                        let endDate = new Date(endValue);
+                        endDate.setDate(endDate.getDate() + 1); // sumamos 1 día
+                        data.set('end', endDate.toISOString().slice(0, 10)); // reemplazar en FormData
+                    }
+
                     var csrfToken = $('meta[name="csrf-token"]').attr('content');
                     const token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 

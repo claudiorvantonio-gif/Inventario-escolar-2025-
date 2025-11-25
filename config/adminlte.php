@@ -358,8 +358,8 @@ return [
             'icon' => 'fas fa-hand-holding-usd',
             'submenu' => [
                 [
-                    'text' => 'Solicitud',
-                    'url' => '#',
+                    'text' => 'Solicitudes de Compra',
+                    'url' => 'solicitudes',
                 ],
                 [
                     'text' => 'Detalle de compra',

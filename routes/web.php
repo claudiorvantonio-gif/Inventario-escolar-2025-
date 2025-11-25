@@ -1,14 +1,12 @@
 <?php
-
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Equipos\EquiposController;
 use App\Http\Controllers\Categorias\CategoriasController;
 use App\Http\Controllers\Personal\PersonalController;
 use App\Http\Controllers\Prestacion\PrestacionController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Sala\SalasController;
-use App\Models\Equipos;
-use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\Solicitud\Solicitud_compra;
 
 Route::get('/', function () {
     return view('dashboard');
@@ -53,6 +51,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/Prestacion_delete/{id}', [PrestacionController::class, 'destroy'])->name('prestacion.destroy');
     Route::put('/Prestacion_update/{id}', [PrestacionController::class, 'update'])->name('prestacion.update');
 
+    Route::get('/solicitudes', [Solicitud_compra::class, 'index'])->name('/solicitudes');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
